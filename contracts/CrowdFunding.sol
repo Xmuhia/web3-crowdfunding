@@ -12,4 +12,28 @@ contract CrowdFunding {
         address[] donators;
         uint256[] donations;
     }
+
+    mapping(uint256 => Campaign) public campaigns;
+
+    uint256 public numberOfCampaigns = 0;
+
+    function createCampaign(address _owner, string memory _title, string memory _description, uint256 _target, uint256 _deadline) public returns (uint256) {
+        Campaign storage campaign = campaigns[numberOfCampaigns];
+
+        require(campaign.deadline < block.timestamp, 'The deadline should be a date in the future' );
+
+        campaign.owner = _owner;
+        campaign.title = _title;
+        campaign.target = _target;
+        campaign.description = _description;
+        campaign.deadline = _deadline;
+        campaign.amountCollected = 0;
+        
+        numberOfCampaigns++;
+
+        return numberOfCampaigns - 1;
+        
+        
+    }
+
 }

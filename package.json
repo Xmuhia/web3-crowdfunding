@@ -11,6 +11,7 @@
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.13",
     "ether": "^0.0.9",
+    "ethers": "^6.15.0",
     "next": "15.5.2",
     "postcss": "^8.5.6",
     "react": "19.1.1",
